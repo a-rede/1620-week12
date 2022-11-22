@@ -59,9 +59,10 @@
 // clickMeButton.addEventListener("click", changeBackgroundColor);
 // clickMeButton.addEventListener('click', changeText);
 
-//* Example 4 - Event Object.target
+//* Example 4 - Event Object.target / Bubbling Activity
 
 const clickMeButton = document.querySelector(".click-me");
+const buttonContainer = document.querySelector('.buttonContainer')
 
 function handleClickMeButton(event) {
     alert("something");
@@ -98,8 +99,14 @@ function changeBGGreen(event) {
     event.target.classList.add("green-background");
 };
 
+function changeParaColor(event) {
+    event.target.style.color = event.target.textContent;
+};
+
 clickMeButton.addEventListener("click", handleClickMeButton, {once:true});
 clickMeButton.addEventListener("click", changeBackgroundColor);
 clickMeButton.addEventListener('click', changeText);
 clickMeButton.addEventListener('click', createAddButton);
 clickMeButton.addEventListener('click', createParagraph);
+buttonContainer.addEventListener('mouseover', changeBGGreen)
+buttonContainer.addEventListener('click', changeParaColor);
